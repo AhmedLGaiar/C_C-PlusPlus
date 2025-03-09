@@ -66,9 +66,16 @@ int main()
     printf("Your ASCII: %d\n", ch);*/
 
     //***************************
+    
+   /* for (int i = 0; i < 256; i++)
+    {
+		printf("ASCII: %d = %c\n", i, i);
+    }*/
 
-    int num1, num2;
-    double avg;
+    //***************************
+
+    /*int num1, num2;
+    float avg;
     const char* menu[] = { "Average", "Sum", "Max" };
     bool isRunning = true;
     int selected = 0;
@@ -115,7 +122,7 @@ int main()
                 printf("\nMax Num: %i", num1 > num2 ? num1 : num2);
                 break;
             }
-
+            
             SetColorAndBackground(15, 0);
             printf("\nPress any key to continue...");
             _getch();
@@ -125,11 +132,61 @@ int main()
             isRunning = false;
             break;
         }
-    } while (isRunning);
+    } while (isRunning);*/
 
-    
     //***************************
 
+    /*int arrNums[5];
+	int i = 0;
+    for (i = 0; i < 5; i++)
+    {
+        printf("Enter Num %i=", i + 1);
+        scanf_s("%i", &arrNums[i]);
+    }
+	int max = arrNums[0];
+	for (i = 1; i < 5; i++)
+	{
+		if (arrNums[i] > max)
+		{
+			max = arrNums[i];
+		}
+	}
+	printf("Max Num: %i", max);*/
+
+    //***************************
+    
+    /*int arr[3][4];
+	for (int i = 0; i < 3; i++)
+	{
+      	printf("Enter For Student Num %i\n", i + 1);
+		for (int j = 0; j < 4; j++)
+		{
+			printf("Enter For Subject Num %i = ", j + 1);
+			scanf_s("%i", &arr[i][j]);
+		}
+        printf("************************************\n");
+	}
+    for (int i = 0; i < 3; i++)
+	{
+		int sum = 0;
+		for (int j = 0; j < 4; j++)
+		{
+			sum += arr[i][j];
+		}
+        printf("Total Grades For Student Num %i = %i\n", i + 1,sum);
+        printf("Avrage Grades For Student Num %i= %1f\n", i + 1,(sum/4.0));
+
+        printf("************************************\n");
+	}*/
+
+    //***************************
+     
+    //char name[50]; 
+
+    //printf("Enter your name: ");
+    //fgets(name,sizeof(name), stdin);
+
+    //printf("Hello, %s\n", name); 
 
     return 0;
 }
