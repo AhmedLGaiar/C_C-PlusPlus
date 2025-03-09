@@ -6,6 +6,7 @@
 *.lo
 *.o
 *.obj
+*.iobj
 
 # Precompiled Headers
 *.gch
@@ -33,17 +34,16 @@
 
 # Visual Studio-specific files
 .vs/
-*.sln
 *.suo
 *.user
-*.vcxproj
-*.vcxproj.filters
-*.vcxproj.user
 *.db
 *.VC.db
 *.ncb
 *.sdf
 *.ipch
+*.opensdf
+*.VC.opendb
+*.lastbuildstate
 
 # Visual Studio Code-specific directory
 .vscode/
@@ -61,10 +61,11 @@ Release/
 *.idb
 *.ipdb
 *.tlog
-*.obj
-*.log
-*.cache
-*.dmp
+*.tli
+*.tlh
+*.tlb
+*.res
+*.rsp
 
 # CMake files (if using CMake)
 CMakeCache.txt
