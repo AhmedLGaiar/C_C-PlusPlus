@@ -16,10 +16,6 @@
 *.dylib
 *.dll
 
-# Fortran module files
-*.mod
-*.smod
-
 # Compiled Static libraries
 *.lai
 *.la
@@ -30,3 +26,69 @@
 *.exe
 *.out
 *.app
+
+# Fortran module files
+*.mod
+*.smod
+
+# Visual Studio-specific files
+.vs/
+*.sln
+*.suo
+*.user
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.db
+*.VC.db
+*.ncb
+*.sdf
+*.ipch
+
+# Visual Studio Code-specific directory
+.vscode/
+
+# Build directories
+/build/
+x64/
+x86/
+ARM/
+ARM64/
+Debug/
+Release/
+*.ilk
+*.pdb
+*.idb
+*.ipdb
+*.tlog
+*.obj
+*.log
+*.cache
+*.dmp
+
+# CMake files (if using CMake)
+CMakeCache.txt
+CMakeFiles/
+CMakeLists.txt.user
+CMakeScripts/
+
+# Windows-specific
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swn
+*.swo
+
+# Clang & Code Analysis
+*.clangd
+*.clang-tidy
+*.clang-format
+
+# JetBrains CLion (if using)
+.idea/
+cmake-build-debug/
+cmake-build-release/
