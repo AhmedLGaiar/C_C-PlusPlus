@@ -18,11 +18,11 @@ int main()
 	/*printf("Press any key: ");
     char ch = getchar();
 
-    printf("Your ASCII: %d\n", ch);
+    printf("Your ASCII: %d\n", ch);*/
 
     //***************************
     
-    for (int i = 0; i < 256; i++)
+    /*for (int i = 0; i < 256; i++)
     {
 		printf("ASCII: %d = %c\n", i, i);
     }*/
@@ -76,7 +76,6 @@ int main()
                 printf("\nThe Sum is: %i", num1 + num2);
                 break;
             case 2:
-                SetColorAndBackground(15, 0);
 
                 printf("\nMax Num: %i", num1 > num2 ? num1 : num2);
                 break;
@@ -84,7 +83,6 @@ int main()
             
             printf("\nPress any key to continue...");
             _getch();
-			SetColorAndBackground(15, 0);
             system("cls");
             break;
         case 27:
@@ -149,7 +147,7 @@ int main()
 
 	//***************************
 
-    int SIZE;
+    /*int SIZE;
     
     do {
         printf("Enter Odd Number: ");
@@ -182,7 +180,7 @@ int main()
             printf("%3d", magicSquare[i][j]);
         }
     }
-    printf("\n");
+    printf("\n");*/
 	
 
     return 0;
