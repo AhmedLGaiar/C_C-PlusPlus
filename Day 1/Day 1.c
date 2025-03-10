@@ -2,60 +2,15 @@
 #include <conio.h>
 #include <windows.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-//To Movse Cursor to X and Y
-void gotoxy1(int x, int y)
-{
-    COORD coord;
-    coord.X = x;
-    coord.Y = y;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-}
+//To Mov e Cursor to X and Y
+void gotoxy1(int x, int y);
 
 //To Change Color
-void SetColorAndBackground(int ForgC, int BackC = 0)
-{
-    WORD wColor = ((BackC & 0x0F) << 4) + (ForgC & 0x0F);
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), wColor);
-}
+void SetColorAndBackground(int ForgC, int BackC);
 
-void clear_screen()
-{
-    DWORD n; /* Number of characters written */
-    DWORD size; /* number of visible characters */
-    COORD coord = { 0 }; /* Top left screen position */
-    CONSOLE_SCREEN_BUFFER_INFO csbi;
-    /* Get a handle to the console */
-    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-    GetConsoleScreenBufferInfo(h, &csbi);
-    /* Find the number of characters to overwrite */
-    size = csbi.dwSize.X * csbi.dwSize.Y;
-    /* Overwrite the screen buffer with whitespace */
-    FillConsoleOutputCharacter(h, TEXT(' '), size, coord, &n);
-    GetConsoleScreenBufferInfo(h, &csbi);
-    FillConsoleOutputAttribute(h, csbi.wAttributes, size, coord, &n);
-    /* Reset the cursor to the top left position */
-    SetConsoleCursorPosition(h, coord);
-}
-
-#pragma region Colors
-/*BLACK        0
-BLUE           1
-GREEN          2
-CYAN           3
-RED            4
-MAGENTA        5
-BROWN          6
-LIGHTGRAY      7
-DARKGRAY       8
-LIGHTBLUE      9
-LIGHTGREEN     10
-LIGHTCYAN      11
-LIGHTRED       12
-LIGHTMAGENTA   13
-YELLOW         14
-WHITE          15*/
-#pragma endregion
+void textattr(unsigned short int newattr);
 
 int main()
 {
@@ -63,11 +18,11 @@ int main()
 	/*printf("Press any key: ");
     char ch = getchar();
 
-    printf("Your ASCII: %d\n", ch);*/
+    printf("Your ASCII: %d\n", ch);
 
     //***************************
     
-   /* for (int i = 0; i < 256; i++)
+    for (int i = 0; i < 256; i++)
     {
 		printf("ASCII: %d = %c\n", i, i);
     }*/
@@ -104,7 +59,9 @@ int main()
             if (selected > 2) selected = 0;
             break;
         case 13: 
-			clear_screen();
+            SetColorAndBackground(15, 0);
+
+			system("cls");
             printf("Press First Num: ");
             scanf_s("%d", &num1);
             printf("\nPress Second Num: ");
@@ -119,14 +76,16 @@ int main()
                 printf("\nThe Sum is: %i", num1 + num2);
                 break;
             case 2:
+                SetColorAndBackground(15, 0);
+
                 printf("\nMax Num: %i", num1 > num2 ? num1 : num2);
                 break;
             }
             
-            SetColorAndBackground(15, 0);
             printf("\nPress any key to continue...");
             _getch();
-            clear_screen();
+			SetColorAndBackground(15, 0);
+            system("cls");
             break;
         case 27:
             isRunning = false;
@@ -155,7 +114,7 @@ int main()
 
     //***************************
     
-    /*int arr[3][4];
+   /*int arr[3][4];
 	for (int i = 0; i < 3; i++)
 	{
       	printf("Enter For Student Num %i\n", i + 1);
@@ -174,19 +133,107 @@ int main()
 			sum += arr[i][j];
 		}
         printf("Total Grades For Student Num %i = %i\n", i + 1,sum);
-        printf("Avrage Grades For Student Num %i= %1f\n", i + 1,(sum/4.0));
+        printf("Average Grades For Student Num %i= %1f\n", i + 1,(sum/4.0));
 
         printf("************************************\n");
 	}*/
 
     //***************************
      
-    //char name[50]; 
+    /*char name[30]; 
 
-    //printf("Enter your name: ");
-    //fgets(name,sizeof(name), stdin);
+    printf("Enter your name: ");
+    fgets(name,sizeof(name), stdin);
 
-    //printf("Hello, %s\n", name); 
+    printf("Hello, %s\n", name);*/ 
+
+	//***************************
+
+    int SIZE;
+    
+    do {
+        printf("Enter Odd Number: ");
+        scanf_s("%d", &SIZE);
+    } while (SIZE % 2 == 0);
+    
+    int** magicSquare = (int**)malloc(SIZE * sizeof(int*));
+    for (int i = 0; i < SIZE; i++) {
+        magicSquare[i] = (int*)calloc(SIZE, sizeof(int));
+    }
+    
+    int i = 0, j = SIZE / 2;
+    for (int num = 1; num <= SIZE * SIZE; num++) {
+        magicSquare[i][j] = num;
+        int newi = (i - 1 + SIZE) % SIZE;
+        int newj = (j + 1) % SIZE;
+        if (magicSquare[newi][newj]) {
+            i = (i + 1) % SIZE;
+        }
+        else {
+            i = newi;
+            j = newj;
+        }
+    }
+    
+    printf("Magic Square of order %d:\n", SIZE);
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            gotoxy1(5 + j * 5, 5 + i * 2); 
+            printf("%3d", magicSquare[i][j]);
+        }
+    }
+    printf("\n");
+	
 
     return 0;
 }
+
+#pragma region Method
+
+void gotoxy1(int x, int y)
+{
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
+//To Change Color
+void SetColorAndBackground(int ForgC, int BackC)
+{
+    WORD wColor = ((BackC & 0x0F) << 4) + (ForgC & 0x0F);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), wColor);
+}
+
+void textattr(unsigned short int newattr)
+{ // requires windows.h
+    HANDLE hStdout;
+    hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
+        if (hStdout == INVALID_HANDLE_VALUE)
+        {
+			printf(printf("Error: GetStdHandle failed with %d \n", GetLastError()));
+                exit(1);
+        }
+   SetConsoleTextAttribute(hStdout, newattr);       
+}
+
+#pragma endregion
+
+#pragma region Colors
+/*BLACK        0
+BLUE           1
+GREEN          2
+CYAN           3
+RED            4
+MAGENTA        5
+BROWN          6
+LIGHTGRAY      7
+DARKGRAY       8
+LIGHTBLUE      9
+LIGHTGREEN     10
+LIGHTCYAN      11
+LIGHTRED       12
+LIGHTMAGENTA   13
+YELLOW         14
+WHITE          15*/
+#pragma endregion
