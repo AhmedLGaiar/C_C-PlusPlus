@@ -18,8 +18,5 @@
     <ClCompile Include="Day 1.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Day2.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
