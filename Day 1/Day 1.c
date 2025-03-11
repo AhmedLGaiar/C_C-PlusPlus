@@ -12,7 +12,7 @@ void SetColorAndBackground(int ForgC, int BackC);
 
 void textattr(unsigned short int newattr);
 
-int main()
+int main(void)
 {
    
 	/*printf("Press any key: ");
@@ -147,7 +147,7 @@ int main()
 
 	//***************************
 
-    /*int SIZE;
+    int SIZE;
     
     do {
         printf("Enter Odd Number: ");
@@ -180,7 +180,7 @@ int main()
             printf("%3d", magicSquare[i][j]);
         }
     }
-    printf("\n");*/
+    printf("\n");
 	
 
     return 0;
